@@ -1,4 +1,4 @@
-package com.hackathontest2
+package com.anonymous.hackathontest2
 
 import android.os.Build
 import android.os.Bundle

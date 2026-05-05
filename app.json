@@ -2,6 +2,12 @@
   "expo": {
     "name": "hackathon-test-2",
     "slug": "hackathon-test-2",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "android": {
+      "package": "com.anonymous.hackathontest2"
+    },
+    "ios": {
+      "bundleIdentifier": "com.anonymous.hackathontest2"
+    }
   }
 }
