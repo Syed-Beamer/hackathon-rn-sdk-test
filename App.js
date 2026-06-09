@@ -14,18 +14,14 @@ import {
   View,
 } from "react-native";
 
-import { PendoSDK, NavigationLibraryType } from "rn-pendo-sdk";
-import { Navigation } from "react-native-navigation";
-
 import { Userflow, UserflowProvider, DesignMode } from "@userflow/react-native";
 
 // ─── Userflow setup ──────────────────────────────────────────────────────────
-// Replace clientToken with your real "ct_…" token from Userflow Settings → Install.
-// Replace serverEndpoint with the Userflow server for your environment.
-const userflowEnvId = "8e784176-b03b-4bde-b94e-85ad21e6d57d";
+
+const userflowEnvId = "c40ff0bd-e258-4831-b793-ea0cc968f2ec";
 
 void Userflow.setup({
-  clientToken: "ct_geenw3tvhbha7ilrarmsokzl3u",
+  clientToken: "ct_vpo46benuvgbrkwi7fvvjox2aa",
   serverEndpoint: "http://localhost:40401",
   appVersion: "1.0.0",
   appBuild: "1",
