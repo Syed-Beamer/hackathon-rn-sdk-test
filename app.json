@@ -8,6 +8,15 @@
     },
     "ios": {
       "bundleIdentifier": "com.anonymous.hackathontest2"
-    }
+    },
+    "plugins": [
+      [
+        "rn-pendo-sdk",
+        {
+          "ios-scheme": "YOUR_IOS_SCHEME_ID",
+          "android-scheme": "YOUR_ANDROID_SCHEME_ID"
+        }
+      ]
+    ]
   }
 }
