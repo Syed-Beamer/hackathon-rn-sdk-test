@@ -1741,55 +1741,6 @@ PODS:
     - Pendo (~> 3.12.0)
     - React
     - React-Core
-  - UserflowReactNative (0.1.0):
-    - hermes-engine
-    - RCTRequired
-    - RCTTypeSafety
-    - React-Core
-    - React-Core-prebuilt
-    - React-debug
-    - React-Fabric
-    - React-featureflags
-    - React-graphics
-    - React-ImageManager
-    - React-jsi
-    - React-NativeModulesApple
-    - React-RCTFabric
-    - React-renderercss
-    - React-rendererdebug
-    - React-utils
-    - ReactCodegen
-    - ReactCommon/turbomodule/bridging
-    - ReactCommon/turbomodule/core
-    - ReactNativeDependencies
-    - Yoga
-  - Userpilot (1.0.15)
-  - UserpilotExpoConfig (1.0.2):
-    - ExpoModulesCore
-    - Userpilot (~> 1.0.7)
-  - UserpilotReactNative (1.0.10):
-    - hermes-engine
-    - RCTRequired
-    - RCTTypeSafety
-    - React-Core
-    - React-Core-prebuilt
-    - React-debug
-    - React-Fabric
-    - React-featureflags
-    - React-graphics
-    - React-ImageManager
-    - React-jsi
-    - React-NativeModulesApple
-    - React-RCTFabric
-    - React-renderercss
-    - React-rendererdebug
-    - React-utils
-    - ReactCodegen
-    - ReactCommon/turbomodule/bridging
-    - ReactCommon/turbomodule/core
-    - ReactNativeDependencies
-    - Userpilot (= 1.0.15)
-    - Yoga
   - Yoga (0.0.0)
 
 DEPENDENCIES:
@@ -1870,16 +1821,12 @@ DEPENDENCIES:
   - ReactNativeDependencies (from `../node_modules/react-native/third-party-podspecs/ReactNativeDependencies.podspec`)
   - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
   - RNPendoSdk (from `../node_modules/rn-pendo-sdk`)
-  - UserflowReactNative (from `../../userflow-react-native-sdk/packages/react-native`)
-  - "UserpilotExpoConfig (from `../node_modules/@userpilot/expo-config/ios`)"
-  - "UserpilotReactNative (from `../node_modules/@userpilot/react-native`)"
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   trunk:
     - HMSegmentedControl
     - Pendo
-    - Userpilot
 
 EXTERNAL SOURCES:
   EXConstants:
@@ -2035,12 +1982,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-navigation"
   RNPendoSdk:
     :path: "../node_modules/rn-pendo-sdk"
-  UserflowReactNative:
-    :path: "../../userflow-react-native-sdk/packages/react-native"
-  UserpilotExpoConfig:
-    :path: "../node_modules/@userpilot/expo-config/ios"
-  UserpilotReactNative:
-    :path: "../node_modules/@userpilot/react-native"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -2123,12 +2064,8 @@ SPEC CHECKSUMS:
   ReactNativeDependencies: 71ce9c28beb282aa720ea7b46980fff9669f428a
   ReactNativeNavigation: 2f6152c7d8fa846b1aa5b88685e0d8d8f6b84485
   RNPendoSdk: a4dcfe6987400108791022fe2df4f2bd9ac2f99f
-  UserflowReactNative: f367061cd350401948ba148bb30a9204fa8a833b
-  Userpilot: 33d65879168e433477cd1c2547eca0c1b5f3c038
-  UserpilotExpoConfig: daa970fac4a95e3b1772f02a63adc2eccac95551
-  UserpilotReactNative: d36f299efd5016a163b86f86367d69a1dadfda04
   Yoga: 5934998fbeaef7845dbf698f698518695ab4cd1a
 
 PODFILE CHECKSUM: ecc47f3a00a9b3fa62932f62874ed83bae79b185
 
-COCOAPODS: 1.16.2
+COCOAPODS: 1.17.0

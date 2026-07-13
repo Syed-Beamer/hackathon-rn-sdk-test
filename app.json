@@ -13,7 +13,7 @@
       [
         "rn-pendo-sdk",
         {
-          "ios-scheme": "YOUR_IOS_SCHEME_ID",
+          "ios-scheme": "pendo-f4fcd7a9",
           "android-scheme": "YOUR_ANDROID_SCHEME_ID"
         }
       ]

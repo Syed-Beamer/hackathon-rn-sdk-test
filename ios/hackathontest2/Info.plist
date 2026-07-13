@@ -30,6 +30,14 @@
           <string>com.anonymous.hackathontest2</string>
         </array>
       </dict>
+      <dict>
+        <key>CFBundleURLName</key>
+        <string>pendo-pairing</string>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>pendo-f4fcd7a9</string>
+        </array>
+      </dict>
     </array>
     <key>CFBundleVersion</key>
     <string>1</string>
