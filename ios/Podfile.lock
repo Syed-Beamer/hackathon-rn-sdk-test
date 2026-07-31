@@ -1,4 +1,26 @@
 PODS:
+  - AsyncStorage (3.1.1):
+    - hermes-engine
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-Core-prebuilt
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - ReactNativeDependencies
+    - Yoga
   - EXConstants (18.0.13):
     - ExpoModulesCore
   - Expo (54.0.34):
@@ -62,7 +84,6 @@ PODS:
     - hermes-engine/Pre-built (= 0.81.5)
   - hermes-engine/Pre-built (0.81.5)
   - HMSegmentedControl (1.5.6)
-  - Pendo (3.12.4.11671)
   - RCTDeprecation (0.81.5)
   - RCTRequired (0.81.5)
   - RCTTypeSafety (0.81.5):
@@ -1737,62 +1758,10 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - RNPendoSdk (3.12.1):
-    - Pendo (~> 3.12.0)
-    - React
-    - React-Core
-  - UserflowReactNative (0.1.0):
-    - hermes-engine
-    - RCTRequired
-    - RCTTypeSafety
-    - React-Core
-    - React-Core-prebuilt
-    - React-debug
-    - React-Fabric
-    - React-featureflags
-    - React-graphics
-    - React-ImageManager
-    - React-jsi
-    - React-NativeModulesApple
-    - React-RCTFabric
-    - React-renderercss
-    - React-rendererdebug
-    - React-utils
-    - ReactCodegen
-    - ReactCommon/turbomodule/bridging
-    - ReactCommon/turbomodule/core
-    - ReactNativeDependencies
-    - Yoga
-  - Userpilot (1.0.15)
-  - UserpilotExpoConfig (1.0.2):
-    - ExpoModulesCore
-    - Userpilot (~> 1.0.7)
-  - UserpilotReactNative (1.0.10):
-    - hermes-engine
-    - RCTRequired
-    - RCTTypeSafety
-    - React-Core
-    - React-Core-prebuilt
-    - React-debug
-    - React-Fabric
-    - React-featureflags
-    - React-graphics
-    - React-ImageManager
-    - React-jsi
-    - React-NativeModulesApple
-    - React-RCTFabric
-    - React-renderercss
-    - React-rendererdebug
-    - React-utils
-    - ReactCodegen
-    - ReactCommon/turbomodule/bridging
-    - ReactCommon/turbomodule/core
-    - ReactNativeDependencies
-    - Userpilot (= 1.0.15)
-    - Yoga
   - Yoga (0.0.0)
 
 DEPENDENCIES:
+  - "AsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - EXConstants (from `../node_modules/expo/node_modules/expo-constants/ios`)
   - Expo (from `../node_modules/expo`)
   - ExpoAsset (from `../node_modules/expo/node_modules/expo-asset/ios`)
@@ -1869,19 +1838,15 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - ReactNativeDependencies (from `../node_modules/react-native/third-party-podspecs/ReactNativeDependencies.podspec`)
   - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
-  - RNPendoSdk (from `../node_modules/rn-pendo-sdk`)
-  - UserflowReactNative (from `../../userflow-react-native-sdk/packages/react-native`)
-  - "UserpilotExpoConfig (from `../node_modules/@userpilot/expo-config/ios`)"
-  - "UserpilotReactNative (from `../node_modules/@userpilot/react-native`)"
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   trunk:
     - HMSegmentedControl
-    - Pendo
-    - Userpilot
 
 EXTERNAL SOURCES:
+  AsyncStorage:
+    :path: "../node_modules/@react-native-async-storage/async-storage"
   EXConstants:
     :path: "../node_modules/expo/node_modules/expo-constants/ios"
   Expo:
@@ -2033,18 +1998,11 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/ReactNativeDependencies.podspec"
   ReactNativeNavigation:
     :path: "../node_modules/react-native-navigation"
-  RNPendoSdk:
-    :path: "../node_modules/rn-pendo-sdk"
-  UserflowReactNative:
-    :path: "../../userflow-react-native-sdk/packages/react-native"
-  UserpilotExpoConfig:
-    :path: "../node_modules/@userpilot/expo-config/ios"
-  UserpilotReactNative:
-    :path: "../node_modules/@userpilot/react-native"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  AsyncStorage: b1af8208aba0429d02dd74d24f1d07f14df49d1c
   EXConstants: fce59a631a06c4151602843667f7cfe35f81e271
   Expo: 514ae3ec54a086aab509f255abfbf37be0fcc0e2
   ExpoAsset: 9e5a7c9c0a9fb83ad5b2bb365141f2bd7f289b66
@@ -2055,7 +2013,6 @@ SPEC CHECKSUMS:
   FBLazyVector: e95a291ad2dadb88e42b06e0c5fb8262de53ec12
   hermes-engine: 9f4dfe93326146a1c99eb535b1cb0b857a3cd172
   HMSegmentedControl: 34c1f54d822d8308e7b24f5d901ec674dfa31352
-  Pendo: 7dac8fa594dbdf1448dbf7c835d35947a9e96bb4
   RCTDeprecation: 943572d4be82d480a48f4884f670135ae30bf990
   RCTRequired: 8f3cfc90cc25cf6e420ddb3e7caaaabc57df6043
   RCTTypeSafety: 16a4144ca3f959583ab019b57d5633df10b5e97c
@@ -2122,11 +2079,6 @@ SPEC CHECKSUMS:
   ReactCommon: 08810150b1206cc44aecf5f6ae19af32f29151a8
   ReactNativeDependencies: 71ce9c28beb282aa720ea7b46980fff9669f428a
   ReactNativeNavigation: 2f6152c7d8fa846b1aa5b88685e0d8d8f6b84485
-  RNPendoSdk: a4dcfe6987400108791022fe2df4f2bd9ac2f99f
-  UserflowReactNative: f367061cd350401948ba148bb30a9204fa8a833b
-  Userpilot: 33d65879168e433477cd1c2547eca0c1b5f3c038
-  UserpilotExpoConfig: daa970fac4a95e3b1772f02a63adc2eccac95551
-  UserpilotReactNative: d36f299efd5016a163b86f86367d69a1dadfda04
   Yoga: 5934998fbeaef7845dbf698f698518695ab4cd1a
 
 PODFILE CHECKSUM: ecc47f3a00a9b3fa62932f62874ed83bae79b185

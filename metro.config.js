@@ -1,59 +1,116 @@
-// Learn more https://docs.expo.io/guides/customizing-metro
-const { getDefaultConfig } = require("expo/metro-config");
 const path = require("path");
+const { getDefaultConfig } = require("expo/metro-config");
 
-/** @type {import('expo/metro-config').MetroConfig} */
-const config = getDefaultConfig(__dirname);
+const projectRoot = __dirname;
 
-const monorepoPackages = path.resolve(
-  __dirname,
-  "../userflow-react-native-sdk/packages"
+const sdkPackages = path.resolve(
+  projectRoot,
+  "../userflow-official-repos/userflow-react-native/packages",
 );
 
-// Watch the monorepo packages so Metro can serve their files across the symlink.
-config.watchFolders = [
-  ...(config.watchFolders ?? []),
-  path.join(monorepoPackages, "react-native"),
-  path.join(monorepoPackages, "core"),
-  path.join(monorepoPackages, "protocol"),
+const SINGLETON_MODULES = [
+  "react",
+  "react-native",
+  "expo",
+  "expo-router",
+  "react-native-safe-area-context",
+  "react-native-screens",
+  "react-native-gesture-handler",
+  "@react-navigation/native",
+  "@react-navigation/core",
 ];
+
+function isSingletonModule(moduleName) {
+  return SINGLETON_MODULES.some(
+    (name) => moduleName === name || moduleName.startsWith(`${name}/`),
+  );
+}
+
+/** @type {import('expo/metro-config').MetroConfig} */
+const config = getDefaultConfig(projectRoot);
+
+// Watch the SDK packages (symlinked via file:)
+config.watchFolders = [...(config.watchFolders ?? []), sdkPackages];
 
 config.resolver = {
   ...config.resolver,
   unstable_enableSymlinks: true,
   extraNodeModules: {
     ...config.resolver?.extraNodeModules,
-    // Pin React / React Native to this project's copies.
-    react: path.resolve(__dirname, "node_modules/react"),
-    "react-native": path.resolve(__dirname, "node_modules/react-native"),
-    // Map monorepo workspace packages to their pre-built dist/lib outputs so
-    // Metro never tries to resolve workspace:* dependencies.
-    "@userflow/core": path.join(monorepoPackages, "core"),
-    "@userflow/protocol": path.join(monorepoPackages, "protocol"),
-    "@userflow/react-native": path.join(monorepoPackages, "react-native"),
-    // The SDK's CJS bundle does require('react-native-view-shot') at runtime.
-    // Because Metro loads the bundle from the monorepo path, Node resolution
-    // would look there first — but the package is only installed here.
-    "react-native-view-shot": path.resolve(
-      __dirname,
-      "node_modules/react-native-view-shot"
-    ),
+    "@userflow/protocol": path.join(sdkPackages, "protocol"),
+    "@userflow/core": path.join(sdkPackages, "core"),
+    "@userflow/react-native": path.join(sdkPackages, "react-native"),
   },
-  resolveRequest: (context, moduleName, platform) => {
-    // Force @userflow/react-native to the pre-built CJS entry so Metro doesn't
-    // follow the "react-native": "src/index.ts" field and pull in TypeScript
-    // source that imports workspace-only packages.
-    if (moduleName === "@userflow/react-native") {
+};
+
+const originalResolveRequest = config.resolver.resolveRequest;
+
+function isBareSpecifier(moduleName) {
+  return !moduleName.startsWith(".") && !path.isAbsolute(moduleName);
+}
+
+const stubbed = new Set();
+
+function warnStubbed(moduleName) {
+  if (stubbed.has(moduleName)) return;
+  stubbed.add(moduleName);
+  console.warn(
+    `[metro] stubbing optional Userflow peer "${moduleName}" — not installed in this app`,
+  );
+}
+
+// Re-run Metro's own resolver as if the request came from this app, so platform
+// extensions and package "exports" are still honoured.
+function resolveFromApp(context, moduleName, platform) {
+  return context.resolveRequest(
+    { ...context, originModulePath: path.join(projectRoot, "index.js") },
+    moduleName,
+    platform,
+  );
+}
+
+config.resolver.resolveRequest = (context, moduleName, platform) => {
+  // Force @userflow/react-native to pre-built CJS, not src/index.ts
+  if (moduleName === "@userflow/react-native") {
+    return {
+      type: "sourceFile",
+      filePath: path.join(sdkPackages, "react-native/lib/commonjs/index.js"),
+    };
+  }
+  // Pin peer deps to THIS app's node_modules (from docs/metro.md)
+  if (isSingletonModule(moduleName)) {
+    try {
       return {
-        filePath: path.join(
-          monorepoPackages,
-          "react-native/lib/commonjs/index.js"
-        ),
         type: "sourceFile",
+        filePath: require.resolve(moduleName, { paths: [projectRoot] }),
       };
+    } catch {
+      // fall through
     }
-    return context.resolveRequest(context, moduleName, platform);
-  },
+  }
+  // The SDK is linked from outside projectRoot, so its own node_modules are
+  // pnpm symlinks pointing outside Metro's watched roots — unresolvable, and a
+  // second copy of a native module (async-storage) even when they do resolve.
+  // Serve every bare dependency the SDK asks for from this app's node_modules.
+  if (
+    isBareSpecifier(moduleName) &&
+    !moduleName.startsWith("@userflow/") &&
+    context.originModulePath?.startsWith(sdkPackages)
+  ) {
+    try {
+      return resolveFromApp(context, moduleName, platform);
+    } catch {
+      // Optional peers (expo-router, @react-navigation/native) that this app
+      // does not install. The SDK feature-detects them at runtime, but Metro
+      // still walks the static require, so hand it an empty module.
+      warnStubbed(moduleName);
+      return { type: "empty" };
+    }
+  }
+  if (originalResolveRequest) {
+    return originalResolveRequest(context, moduleName, platform);
+  }
+  return context.resolveRequest(context, moduleName, platform);
 };
 
 config.transformer = {

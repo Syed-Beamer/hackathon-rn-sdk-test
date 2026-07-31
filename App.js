@@ -5,6 +5,7 @@ import {
   Dimensions,
   Modal,
   PanResponder,
+  Platform,
   Pressable,
   SafeAreaView,
   ScrollView,
@@ -13,7 +14,9 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { PendoSDK, NavigationLibraryType } from "rn-pendo-sdk";
+
+import { Userflow, UserflowProvider } from "@userflow/react-native";
+// import { PendoSDK, NavigationLibraryType } from "rn-pendo-sdk";
 
 // import { Userflow, UserflowProvider, DesignMode } from "@userflow/react-native";
 
@@ -38,20 +41,45 @@ import { PendoSDK, NavigationLibraryType } from "rn-pendo-sdk";
 // ─────────────────────────────────────────────────────────────────────────────
 
 // Pendo setup
-function initPendo() {
-  const navigationOptions = { library: NavigationLibraryType.Other };
-  const pendoKey = "YOUR_PUBLIC_APP_ID";
-  PendoSDK.setup(pendoKey, navigationOptions);
+// function initPendo() {
+//   const navigationOptions = { library: NavigationLibraryType.Other };
+//   const pendoKey =
+//     "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhY2VudGVyIjoidXMiLCJrZXkiOiIwMmM0ODg4M2YxZWUzMGFjNDBkOTBjZjUxZDFlODMyZjhiYTE5YjA4YTY0N2QxMDY2Y2RkOTg1ZjlkY2M3N2JjMmM2YTA2OTgyZjFkNDdkMmU3MDY4MDBjMWRiZTk4ZDJlYmFmZGYzZTViZTI3ZDIzMmEzMzJmMmVhNzVlNjExNzg1YzcwM2FlNzk4OTQxZGZjNTQ1ODhlNTJkMTljYjc3ZTdlODBhNGFmY2FhMDFiNGNmYmRlNzIzYTNiMmQwMWM1YjEyYTBjZjc3NmRiM2E2NGRlZmNmODA2OTliZDI3ZGU3MmEyZjdjYWVmNzM4NDhiNGYyMzg0YjZhNDIwNjIwZTkwNjMxZWMzMzFlNzgyNjE0MjcyZDAyZGMzNjg3MmYuYzlkMjAyMjYwZjhhYzQ2ODhmNTFmNmExMjNkMGMyYTguYmY1MGExZTQ5MDFkZTIzMjJhMDdkNDM3ZjU3MmE4YzQwYWRlNDVlNzlhZWNiNjNlMzIzZjc3N2Y0MGU5YjFlYyJ9.qstQNYVUupvrOAGwDBTCOSXrrFGpqvwKnLRnI1yB420tJnmBqmVqJHDwcCRBmMau7hBJWpbdCU0MdgX_6RHnN5ElP_WXo4OlpebgVIlpxPEEN_i0pn155nAe2veMsef_K1Zp39-s4cqyrk4GQg2YRlqq00aEQEm1MRRUE3yW-ng";
+//   PendoSDK.setup(pendoKey, navigationOptions);
 
-  PendoSDK.startSession(
-    "test-guy",
-    "account-1",
-    { name: "someone", email: "something@example.com" },
-    {},
-  );
+//   PendoSDK.startSession(
+//     "test-guy",
+//     "account-1",
+//     { name: "someone", email: "something@example.com" },
+//     {},
+//   );
+// }
+
+// initPendo()
+
+// The local stack serves the end-user endpoint (prod: https://e.userflow.com)
+// on port 40401. The iOS Simulator shares the Mac's network stack, so localhost
+// is the host; the Android emulator needs 10.0.2.2 to reach it.
+const USERFLOW_SERVER_ENDPOINT = "http://localhost:40401";
+async function initUserflow() {
+  // init() takes a config object, and identify() throws until init() resolves.
+  await Userflow.init({
+    clientToken: "ct_wsbg2s32tnffrnspespfkgkioq",
+    // Omit serverEndpoint to target production.
+    // serverEndpoint: USERFLOW_SERVER_ENDPOINT,
+    serverEndpoint: USERFLOW_SERVER_ENDPOINT,
+    pairingEndpoint: USERFLOW_SERVER_ENDPOINT,
+  });
+  await Userflow.identify("Number1", {
+    name: "syed",
+    email: "syed.ahamed@test.com",
+    pageUrl: "",
+  });
 }
 
-initPendo();
+initUserflow().catch((error) => {
+  console.warn("[Userflow] init failed", error);
+});
 
 const { height: SCREEN_HEIGHT, width: SCREEN_WIDTH } = Dimensions.get("window");
 
@@ -530,186 +558,188 @@ export default function App() {
 
   return (
     <>
-      <SafeAreaView style={styles.safeArea}>
-        <StatusBar style="dark" />
+      <UserflowProvider>
+        <SafeAreaView style={styles.safeArea}>
+          <StatusBar style="dark" />
 
-        {/* Header */}
-        <View style={styles.header}>
-          <View>
-            <Text style={styles.greeting}>Good afternoon 👋</Text>
-            <Text style={styles.headerTitle}>Markets</Text>
-          </View>
-          <View style={styles.headerActions}>
-            <TouchableOpacity
-              style={styles.iconBtn}
-              onPress={() => setAlertVisible(true)}
-            >
-              <Text style={styles.iconBtnText}>🔔</Text>
-            </TouchableOpacity>
-            <View style={styles.avatar}>
-              <Text style={styles.avatarText}>JD</Text>
+          {/* Header */}
+          <View style={styles.header}>
+            <View>
+              <Text style={styles.greeting}>Good afternoon 👋</Text>
+              <Text style={styles.headerTitle}>Markets</Text>
             </View>
-          </View>
-        </View>
-
-        {/* Portfolio Card */}
-        <View style={styles.portfolioCard}>
-          <Text style={styles.portfolioLabel}>Portfolio Value</Text>
-          <Text style={styles.portfolioValue}>$124,830.42</Text>
-          <View style={styles.portfolioRow}>
-            <View style={styles.portfolioBadge}>
-              <Text style={styles.portfolioBadgeText}>
-                +$3,241.20 today +2.67%
-              </Text>
-            </View>
-          </View>
-          <View style={styles.portfolioStats}>
-            <View style={styles.portfolioStat}>
-              <Text style={styles.portfolioStatLabel}>Invested</Text>
-              <Text style={styles.portfolioStatValue}>$98,400.00</Text>
-            </View>
-            <View style={styles.portfolioStatDivider} />
-            <View style={styles.portfolioStat}>
-              <Text style={styles.portfolioStatLabel}>Returns</Text>
-              <Text style={[styles.portfolioStatValue, { color: "#16a34a" }]}>
-                +26.9%
-              </Text>
-            </View>
-            <View style={styles.portfolioStatDivider} />
-            <View style={styles.portfolioStat}>
-              <Text style={styles.portfolioStatLabel}>Positions</Text>
-              <Text style={styles.portfolioStatValue}>8</Text>
-            </View>
-          </View>
-        </View>
-
-        {/* Market Indices */}
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={styles.indicesScroll}
-          contentContainerStyle={{ paddingHorizontal: 16 }}
-        >
-          {INDICES.map((idx) => (
-            <View key={idx.name} style={styles.indexCard}>
-              <Text style={styles.indexName}>{idx.name}</Text>
-              <Text style={styles.indexValue}>{idx.value}</Text>
-              <Text
-                style={[
-                  styles.indexChange,
-                  { color: idx.isUp ? "#16a34a" : "#dc2626" },
-                ]}
-              >
-                {idx.change}
-              </Text>
-            </View>
-          ))}
-        </ScrollView>
-
-        {/* Tabs */}
-        <View style={styles.tabRow}>
-          {TABS.map((tab, i) => (
-            <TouchableOpacity
-              key={tab}
-              style={[styles.tab, activeTab === i && styles.tabActive]}
-              onPress={() => setActiveTab(i)}
-            >
-              <Text
-                style={[
-                  styles.tabText,
-                  activeTab === i && styles.tabTextActive,
-                ]}
-              >
-                {tab}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-
-        {/* Stock List */}
-        <ScrollView
-          style={styles.stockList}
-          showsVerticalScrollIndicator={false}
-        >
-          {filteredStocks().map((stock) => (
-            <StockCard key={stock.symbol} stock={stock} onPress={openSheet} />
-          ))}
-          <View style={{ height: 100 }} />
-        </ScrollView>
-
-        {/* FAB */}
-        <TouchableOpacity
-          style={styles.fab}
-          activeOpacity={0.85}
-          onPress={() => openSheet(STOCKS[0])}
-        >
-          <Text style={styles.fabText}>＋ Quick Trade</Text>
-        </TouchableOpacity>
-
-        {/* Bottom Sheet */}
-        <BottomSheet
-          visible={sheetVisible}
-          onClose={() => setSheetVisible(false)}
-          stock={selectedStock}
-        />
-
-        {/* Alert Modal */}
-        <Modal
-          transparent
-          visible={alertVisible}
-          animationType="fade"
-          onRequestClose={() => setAlertVisible(false)}
-        >
-          <Pressable
-            style={styles.confirmBackdrop}
-            onPress={() => setAlertVisible(false)}
-          >
-            <Pressable style={styles.alertModal} onPress={() => {}}>
-              <Text style={styles.alertTitle}>Price Alerts</Text>
-              {[
-                {
-                  symbol: "AAPL",
-                  msg: "Reached your target of $190",
-                  time: "2m ago",
-                  isUp: true,
-                },
-                {
-                  symbol: "NVDA",
-                  msg: "Dropped below $880",
-                  time: "14m ago",
-                  isUp: false,
-                },
-                {
-                  symbol: "TSLA",
-                  msg: "Volume spike detected",
-                  time: "1h ago",
-                  isUp: true,
-                },
-              ].map((a) => (
-                <View key={a.symbol} style={styles.alertItem}>
-                  <View
-                    style={[
-                      styles.alertDot,
-                      { backgroundColor: a.isUp ? "#16a34a" : "#dc2626" },
-                    ]}
-                  />
-                  <View style={{ flex: 1 }}>
-                    <Text style={styles.alertSymbol}>{a.symbol}</Text>
-                    <Text style={styles.alertMsg}>{a.msg}</Text>
-                  </View>
-                  <Text style={styles.alertTime}>{a.time}</Text>
-                </View>
-              ))}
+            <View style={styles.headerActions}>
               <TouchableOpacity
-                style={styles.alertCloseBtn}
-                onPress={() => setAlertVisible(false)}
+                style={styles.iconBtn}
+                onPress={() => setAlertVisible(true)}
               >
-                <Text style={styles.alertCloseBtnText}>Dismiss All</Text>
+                <Text style={styles.iconBtnText}>🔔</Text>
               </TouchableOpacity>
+              <View style={styles.avatar}>
+                <Text style={styles.avatarText}>JD</Text>
+              </View>
+            </View>
+          </View>
+
+          {/* Portfolio Card */}
+          <View style={styles.portfolioCard}>
+            <Text style={styles.portfolioLabel}>Portfolio Value</Text>
+            <Text style={styles.portfolioValue}>$124,830.42</Text>
+            <View style={styles.portfolioRow}>
+              <View style={styles.portfolioBadge}>
+                <Text style={styles.portfolioBadgeText}>
+                  +$3,241.20 today +2.67%
+                </Text>
+              </View>
+            </View>
+            <View style={styles.portfolioStats}>
+              <View style={styles.portfolioStat}>
+                <Text style={styles.portfolioStatLabel}>Invested</Text>
+                <Text style={styles.portfolioStatValue}>$98,400.00</Text>
+              </View>
+              <View style={styles.portfolioStatDivider} />
+              <View style={styles.portfolioStat}>
+                <Text style={styles.portfolioStatLabel}>Returns</Text>
+                <Text style={[styles.portfolioStatValue, { color: "#16a34a" }]}>
+                  +26.9%
+                </Text>
+              </View>
+              <View style={styles.portfolioStatDivider} />
+              <View style={styles.portfolioStat}>
+                <Text style={styles.portfolioStatLabel}>Positions</Text>
+                <Text style={styles.portfolioStatValue}>8</Text>
+              </View>
+            </View>
+          </View>
+
+          {/* Market Indices */}
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={styles.indicesScroll}
+            contentContainerStyle={{ paddingHorizontal: 16 }}
+          >
+            {INDICES.map((idx) => (
+              <View key={idx.name} style={styles.indexCard}>
+                <Text style={styles.indexName}>{idx.name}</Text>
+                <Text style={styles.indexValue}>{idx.value}</Text>
+                <Text
+                  style={[
+                    styles.indexChange,
+                    { color: idx.isUp ? "#16a34a" : "#dc2626" },
+                  ]}
+                >
+                  {idx.change}
+                </Text>
+              </View>
+            ))}
+          </ScrollView>
+
+          {/* Tabs */}
+          <View style={styles.tabRow}>
+            {TABS.map((tab, i) => (
+              <TouchableOpacity
+                key={tab}
+                style={[styles.tab, activeTab === i && styles.tabActive]}
+                onPress={() => setActiveTab(i)}
+              >
+                <Text
+                  style={[
+                    styles.tabText,
+                    activeTab === i && styles.tabTextActive,
+                  ]}
+                >
+                  {tab}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+
+          {/* Stock List */}
+          <ScrollView
+            style={styles.stockList}
+            showsVerticalScrollIndicator={false}
+          >
+            {filteredStocks().map((stock) => (
+              <StockCard key={stock.symbol} stock={stock} onPress={openSheet} />
+            ))}
+            <View style={{ height: 100 }} />
+          </ScrollView>
+
+          {/* FAB */}
+          <TouchableOpacity
+            style={styles.fab}
+            activeOpacity={0.85}
+            onPress={() => openSheet(STOCKS[0])}
+          >
+            <Text style={styles.fabText}>＋ Quick Trade</Text>
+          </TouchableOpacity>
+
+          {/* Bottom Sheet */}
+          <BottomSheet
+            visible={sheetVisible}
+            onClose={() => setSheetVisible(false)}
+            stock={selectedStock}
+          />
+
+          {/* Alert Modal */}
+          <Modal
+            transparent
+            visible={alertVisible}
+            animationType="fade"
+            onRequestClose={() => setAlertVisible(false)}
+          >
+            <Pressable
+              style={styles.confirmBackdrop}
+              onPress={() => setAlertVisible(false)}
+            >
+              <Pressable style={styles.alertModal} onPress={() => {}}>
+                <Text style={styles.alertTitle}>Price Alerts</Text>
+                {[
+                  {
+                    symbol: "AAPL",
+                    msg: "Reached your target of $190",
+                    time: "2m ago",
+                    isUp: true,
+                  },
+                  {
+                    symbol: "NVDA",
+                    msg: "Dropped below $880",
+                    time: "14m ago",
+                    isUp: false,
+                  },
+                  {
+                    symbol: "TSLA",
+                    msg: "Volume spike detected",
+                    time: "1h ago",
+                    isUp: true,
+                  },
+                ].map((a) => (
+                  <View key={a.symbol} style={styles.alertItem}>
+                    <View
+                      style={[
+                        styles.alertDot,
+                        { backgroundColor: a.isUp ? "#16a34a" : "#dc2626" },
+                      ]}
+                    />
+                    <View style={{ flex: 1 }}>
+                      <Text style={styles.alertSymbol}>{a.symbol}</Text>
+                      <Text style={styles.alertMsg}>{a.msg}</Text>
+                    </View>
+                    <Text style={styles.alertTime}>{a.time}</Text>
+                  </View>
+                ))}
+                <TouchableOpacity
+                  style={styles.alertCloseBtn}
+                  onPress={() => setAlertVisible(false)}
+                >
+                  <Text style={styles.alertCloseBtnText}>Dismiss All</Text>
+                </TouchableOpacity>
+              </Pressable>
             </Pressable>
-          </Pressable>
-        </Modal>
-      </SafeAreaView>
+          </Modal>
+        </SafeAreaView>
+      </UserflowProvider>
     </>
   );
 }
