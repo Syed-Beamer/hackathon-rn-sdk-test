@@ -1,3 +1,4 @@
+import "./userflow-ws-logger";
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useRef, useEffect } from "react";
 import {
@@ -16,6 +17,7 @@ import {
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { PendoSDK, NavigationLibraryType } from "rn-pendo-sdk";
 import {
+  SDK_VERSION,
   Userflow,
   UserflowProvider,
   useUserflowAnchor,
@@ -25,17 +27,26 @@ import {
 
 const USERFLOW_SERVER_ENDPOINT = "http://localhost:40401";
 
-async function initUserflow() {
-  await Userflow.init({
-    clientToken: "ct_6grq54rwz5d47bxl3jubyhqhje",
-    serverEndpoint: USERFLOW_SERVER_ENDPOINT,
-    pairingEndpoint: USERFLOW_SERVER_ENDPOINT,
-  });
+console.log("[UF] module loaded, SDK_VERSION =", SDK_VERSION);
 
-  await Userflow.identify("test-user-1", {
-    name: "Test User",
-    email: "test@example.com",
-  });
+async function initUserflow() {
+  try {
+    console.log("[UF] init ->", USERFLOW_SERVER_ENDPOINT);
+    const config = await Userflow.init({
+      clientToken: "ct_6grq54rwz5d47bxl3jubyhqhje",
+      serverEndpoint: USERFLOW_SERVER_ENDPOINT,
+      pairingEndpoint: USERFLOW_SERVER_ENDPOINT,
+    });
+    console.log("[UF] init ok", config);
+
+    await Userflow.identify("test-user-1", {
+      name: "Test User",
+      email: "test@example.com",
+    });
+    console.log("[UF] identify ok, userId =", Userflow.getUserId());
+  } catch (error) {
+    console.error("[UF] setup FAILED:", error?.name, error?.message, error);
+  }
 }
 
 void initUserflow();
