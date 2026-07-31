@@ -9,11 +9,19 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@react-native-community/netinfo": "11.4.1",
+    "@userflow/core": "file:../userflow-react-native/packages/core",
+    "@userflow/expo": "file:../userflow-react-native/packages/expo",
+    "@userflow/protocol": "file:../userflow-react-native/packages/protocol",
+    "@userflow/react-native": "file:../userflow-react-native/packages/react-native",
     "expo": "~54.0.33",
+    "expo-secure-store": "~15.0.8",
     "expo-status-bar": "~3.0.9",
     "react": "19.1.0",
     "react-native": "0.81.5",
     "react-native-navigation": "^8.8.2",
+    "react-native-safe-area-context": "~5.6.0",
     "react-native-view-shot": "^5.1.0",
     "rn-pendo-sdk": "^3.12.1"
   },

@@ -38,6 +38,14 @@
           <string>pendo-f4fcd7a9</string>
         </array>
       </dict>
+      <dict>
+        <key>CFBundleURLName</key>
+        <string>userflow</string>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>userflow-946316</string>
+        </array>
+      </dict>
     </array>
     <key>CFBundleVersion</key>
     <string>1</string>

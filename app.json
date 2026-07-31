@@ -11,12 +11,12 @@
     },
     "plugins": [
       [
-        "rn-pendo-sdk",
+        "@userflow/expo",
         {
-          "ios-scheme": "pendo-f4fcd7a9",
-          "android-scheme": "YOUR_ANDROID_SCHEME_ID"
+          "schemeId": "userflow-946316"
         }
-      ]
+      ],
+      "expo-secure-store"
     ]
   }
 }

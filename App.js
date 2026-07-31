@@ -13,29 +13,32 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import { PendoSDK, NavigationLibraryType } from "rn-pendo-sdk";
+import {
+  Userflow,
+  UserflowProvider,
+  useUserflowAnchor,
+  useUserflowScreen,
+  useUserflowScrollContainer,
+} from "@userflow/react-native";
 
-// import { Userflow, UserflowProvider, DesignMode } from "@userflow/react-native";
+const USERFLOW_SERVER_ENDPOINT = "http://localhost:40401";
 
-// ─── Userflow setup ──────────────────────────────────────────────────────────
+async function initUserflow() {
+  await Userflow.init({
+    clientToken: "ct_6grq54rwz5d47bxl3jubyhqhje",
+    serverEndpoint: USERFLOW_SERVER_ENDPOINT,
+    pairingEndpoint: USERFLOW_SERVER_ENDPOINT,
+  });
 
-// const userflowEnvId = "c40ff0bd-e258-4831-b793-ea0cc968f2ec";
+  await Userflow.identify("test-user-1", {
+    name: "Test User",
+    email: "test@example.com",
+  });
+}
 
-// void Userflow.setup({
-//   clientToken: "ct_vpo46benuvgbrkwi7fvvjox2aa",
-//   serverEndpoint: "http://localhost:40401",
-//   appVersion: "1.0.0",
-//   appBuild: "1",
-//   debug: __DEV__,
-//   devModeEnabled: __DEV__,
-//   onInitComplete: () => {
-//     void Userflow.instance().startSession({
-//       visitorId: "test-user-1",
-//       attributes: { name: "Test User", email: "test@example.com" },
-//     });
-//   },
-// });
-// ─────────────────────────────────────────────────────────────────────────────
+void initUserflow();
 
 // Pendo setup
 function initPendo() {
@@ -51,7 +54,7 @@ function initPendo() {
   );
 }
 
-initPendo();
+// initPendo();
 
 const { height: SCREEN_HEIGHT, width: SCREEN_WIDTH } = Dimensions.get("window");
 
@@ -511,6 +514,13 @@ export default function App() {
   const [sheetVisible, setSheetVisible] = useState(false);
   const [alertVisible, setAlertVisible] = useState(false);
 
+  useUserflowScreen(TABS[activeTab]);
+
+  const stockScroll = useUserflowScrollContainer();
+  const portfolioAnchor = useUserflowAnchor("portfolio-value");
+  const priceAlertsAnchor = useUserflowAnchor("price-alerts");
+  const quickTradeAnchor = useUserflowAnchor("quick-trade");
+
   const filteredStocks = () => {
     if (activeTab === 1)
       return [...STOCKS]
@@ -529,188 +539,193 @@ export default function App() {
   };
 
   return (
-    <>
-      <SafeAreaView style={styles.safeArea}>
-        <StatusBar style="dark" />
+    <SafeAreaProvider>
+      <UserflowProvider>
+        <SafeAreaView style={styles.safeArea}>
+          <StatusBar style="dark" />
 
-        {/* Header */}
-        <View style={styles.header}>
-          <View>
-            <Text style={styles.greeting}>Good afternoon 👋</Text>
-            <Text style={styles.headerTitle}>Markets</Text>
-          </View>
-          <View style={styles.headerActions}>
-            <TouchableOpacity
-              style={styles.iconBtn}
-              onPress={() => setAlertVisible(true)}
-            >
-              <Text style={styles.iconBtnText}>🔔</Text>
-            </TouchableOpacity>
-            <View style={styles.avatar}>
-              <Text style={styles.avatarText}>JD</Text>
+          {/* Header */}
+          <View style={styles.header}>
+            <View>
+              <Text style={styles.greeting}>Good afternoon 👋</Text>
+              <Text style={styles.headerTitle}>Markets</Text>
             </View>
-          </View>
-        </View>
-
-        {/* Portfolio Card */}
-        <View style={styles.portfolioCard}>
-          <Text style={styles.portfolioLabel}>Portfolio Value</Text>
-          <Text style={styles.portfolioValue}>$124,830.42</Text>
-          <View style={styles.portfolioRow}>
-            <View style={styles.portfolioBadge}>
-              <Text style={styles.portfolioBadgeText}>
-                +$3,241.20 today +2.67%
-              </Text>
-            </View>
-          </View>
-          <View style={styles.portfolioStats}>
-            <View style={styles.portfolioStat}>
-              <Text style={styles.portfolioStatLabel}>Invested</Text>
-              <Text style={styles.portfolioStatValue}>$98,400.00</Text>
-            </View>
-            <View style={styles.portfolioStatDivider} />
-            <View style={styles.portfolioStat}>
-              <Text style={styles.portfolioStatLabel}>Returns</Text>
-              <Text style={[styles.portfolioStatValue, { color: "#16a34a" }]}>
-                +26.9%
-              </Text>
-            </View>
-            <View style={styles.portfolioStatDivider} />
-            <View style={styles.portfolioStat}>
-              <Text style={styles.portfolioStatLabel}>Positions</Text>
-              <Text style={styles.portfolioStatValue}>8</Text>
-            </View>
-          </View>
-        </View>
-
-        {/* Market Indices */}
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={styles.indicesScroll}
-          contentContainerStyle={{ paddingHorizontal: 16 }}
-        >
-          {INDICES.map((idx) => (
-            <View key={idx.name} style={styles.indexCard}>
-              <Text style={styles.indexName}>{idx.name}</Text>
-              <Text style={styles.indexValue}>{idx.value}</Text>
-              <Text
-                style={[
-                  styles.indexChange,
-                  { color: idx.isUp ? "#16a34a" : "#dc2626" },
-                ]}
-              >
-                {idx.change}
-              </Text>
-            </View>
-          ))}
-        </ScrollView>
-
-        {/* Tabs */}
-        <View style={styles.tabRow}>
-          {TABS.map((tab, i) => (
-            <TouchableOpacity
-              key={tab}
-              style={[styles.tab, activeTab === i && styles.tabActive]}
-              onPress={() => setActiveTab(i)}
-            >
-              <Text
-                style={[
-                  styles.tabText,
-                  activeTab === i && styles.tabTextActive,
-                ]}
-              >
-                {tab}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-
-        {/* Stock List */}
-        <ScrollView
-          style={styles.stockList}
-          showsVerticalScrollIndicator={false}
-        >
-          {filteredStocks().map((stock) => (
-            <StockCard key={stock.symbol} stock={stock} onPress={openSheet} />
-          ))}
-          <View style={{ height: 100 }} />
-        </ScrollView>
-
-        {/* FAB */}
-        <TouchableOpacity
-          style={styles.fab}
-          activeOpacity={0.85}
-          onPress={() => openSheet(STOCKS[0])}
-        >
-          <Text style={styles.fabText}>＋ Quick Trade</Text>
-        </TouchableOpacity>
-
-        {/* Bottom Sheet */}
-        <BottomSheet
-          visible={sheetVisible}
-          onClose={() => setSheetVisible(false)}
-          stock={selectedStock}
-        />
-
-        {/* Alert Modal */}
-        <Modal
-          transparent
-          visible={alertVisible}
-          animationType="fade"
-          onRequestClose={() => setAlertVisible(false)}
-        >
-          <Pressable
-            style={styles.confirmBackdrop}
-            onPress={() => setAlertVisible(false)}
-          >
-            <Pressable style={styles.alertModal} onPress={() => {}}>
-              <Text style={styles.alertTitle}>Price Alerts</Text>
-              {[
-                {
-                  symbol: "AAPL",
-                  msg: "Reached your target of $190",
-                  time: "2m ago",
-                  isUp: true,
-                },
-                {
-                  symbol: "NVDA",
-                  msg: "Dropped below $880",
-                  time: "14m ago",
-                  isUp: false,
-                },
-                {
-                  symbol: "TSLA",
-                  msg: "Volume spike detected",
-                  time: "1h ago",
-                  isUp: true,
-                },
-              ].map((a) => (
-                <View key={a.symbol} style={styles.alertItem}>
-                  <View
-                    style={[
-                      styles.alertDot,
-                      { backgroundColor: a.isUp ? "#16a34a" : "#dc2626" },
-                    ]}
-                  />
-                  <View style={{ flex: 1 }}>
-                    <Text style={styles.alertSymbol}>{a.symbol}</Text>
-                    <Text style={styles.alertMsg}>{a.msg}</Text>
-                  </View>
-                  <Text style={styles.alertTime}>{a.time}</Text>
-                </View>
-              ))}
+            <View style={styles.headerActions}>
               <TouchableOpacity
-                style={styles.alertCloseBtn}
-                onPress={() => setAlertVisible(false)}
+                ref={priceAlertsAnchor}
+                style={styles.iconBtn}
+                onPress={() => setAlertVisible(true)}
               >
-                <Text style={styles.alertCloseBtnText}>Dismiss All</Text>
+                <Text style={styles.iconBtnText}>🔔</Text>
               </TouchableOpacity>
+              <View style={styles.avatar}>
+                <Text style={styles.avatarText}>JD</Text>
+              </View>
+            </View>
+          </View>
+
+          {/* Portfolio Card */}
+          <View ref={portfolioAnchor} style={styles.portfolioCard}>
+            <Text style={styles.portfolioLabel}>Portfolio Value</Text>
+            <Text style={styles.portfolioValue}>$124,830.42</Text>
+            <View style={styles.portfolioRow}>
+              <View style={styles.portfolioBadge}>
+                <Text style={styles.portfolioBadgeText}>
+                  +$3,241.20 today +2.67%
+                </Text>
+              </View>
+            </View>
+            <View style={styles.portfolioStats}>
+              <View style={styles.portfolioStat}>
+                <Text style={styles.portfolioStatLabel}>Invested</Text>
+                <Text style={styles.portfolioStatValue}>$98,400.00</Text>
+              </View>
+              <View style={styles.portfolioStatDivider} />
+              <View style={styles.portfolioStat}>
+                <Text style={styles.portfolioStatLabel}>Returns</Text>
+                <Text style={[styles.portfolioStatValue, { color: "#16a34a" }]}>
+                  +26.9%
+                </Text>
+              </View>
+              <View style={styles.portfolioStatDivider} />
+              <View style={styles.portfolioStat}>
+                <Text style={styles.portfolioStatLabel}>Positions</Text>
+                <Text style={styles.portfolioStatValue}>8</Text>
+              </View>
+            </View>
+          </View>
+
+          {/* Market Indices */}
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={styles.indicesScroll}
+            contentContainerStyle={{ paddingHorizontal: 16 }}
+          >
+            {INDICES.map((idx) => (
+              <View key={idx.name} style={styles.indexCard}>
+                <Text style={styles.indexName}>{idx.name}</Text>
+                <Text style={styles.indexValue}>{idx.value}</Text>
+                <Text
+                  style={[
+                    styles.indexChange,
+                    { color: idx.isUp ? "#16a34a" : "#dc2626" },
+                  ]}
+                >
+                  {idx.change}
+                </Text>
+              </View>
+            ))}
+          </ScrollView>
+
+          {/* Tabs */}
+          <View style={styles.tabRow}>
+            {TABS.map((tab, i) => (
+              <TouchableOpacity
+                key={tab}
+                style={[styles.tab, activeTab === i && styles.tabActive]}
+                onPress={() => setActiveTab(i)}
+              >
+                <Text
+                  style={[
+                    styles.tabText,
+                    activeTab === i && styles.tabTextActive,
+                  ]}
+                >
+                  {tab}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+
+          {/* Stock List */}
+          <ScrollView
+            {...stockScroll}
+            style={styles.stockList}
+            showsVerticalScrollIndicator={false}
+          >
+            {filteredStocks().map((stock) => (
+              <StockCard key={stock.symbol} stock={stock} onPress={openSheet} />
+            ))}
+            <View style={{ height: 100 }} />
+          </ScrollView>
+
+          {/* FAB */}
+          <TouchableOpacity
+            ref={quickTradeAnchor}
+            style={styles.fab}
+            activeOpacity={0.85}
+            onPress={() => openSheet(STOCKS[0])}
+          >
+            <Text style={styles.fabText}>＋ Quick Trade</Text>
+          </TouchableOpacity>
+
+          {/* Bottom Sheet */}
+          <BottomSheet
+            visible={sheetVisible}
+            onClose={() => setSheetVisible(false)}
+            stock={selectedStock}
+          />
+
+          {/* Alert Modal */}
+          <Modal
+            transparent
+            visible={alertVisible}
+            animationType="fade"
+            onRequestClose={() => setAlertVisible(false)}
+          >
+            <Pressable
+              style={styles.confirmBackdrop}
+              onPress={() => setAlertVisible(false)}
+            >
+              <Pressable style={styles.alertModal} onPress={() => {}}>
+                <Text style={styles.alertTitle}>Price Alerts</Text>
+                {[
+                  {
+                    symbol: "AAPL",
+                    msg: "Reached your target of $190",
+                    time: "2m ago",
+                    isUp: true,
+                  },
+                  {
+                    symbol: "NVDA",
+                    msg: "Dropped below $880",
+                    time: "14m ago",
+                    isUp: false,
+                  },
+                  {
+                    symbol: "TSLA",
+                    msg: "Volume spike detected",
+                    time: "1h ago",
+                    isUp: true,
+                  },
+                ].map((a) => (
+                  <View key={a.symbol} style={styles.alertItem}>
+                    <View
+                      style={[
+                        styles.alertDot,
+                        { backgroundColor: a.isUp ? "#16a34a" : "#dc2626" },
+                      ]}
+                    />
+                    <View style={{ flex: 1 }}>
+                      <Text style={styles.alertSymbol}>{a.symbol}</Text>
+                      <Text style={styles.alertMsg}>{a.msg}</Text>
+                    </View>
+                    <Text style={styles.alertTime}>{a.time}</Text>
+                  </View>
+                ))}
+                <TouchableOpacity
+                  style={styles.alertCloseBtn}
+                  onPress={() => setAlertVisible(false)}
+                >
+                  <Text style={styles.alertCloseBtnText}>Dismiss All</Text>
+                </TouchableOpacity>
+              </Pressable>
             </Pressable>
-          </Pressable>
-        </Modal>
-      </SafeAreaView>
-    </>
+          </Modal>
+        </SafeAreaView>
+      </UserflowProvider>
+    </SafeAreaProvider>
   );
 }
 
