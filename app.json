@@ -13,7 +13,7 @@
       [
         "@userflow/expo",
         {
-          "schemeId": "userflow-946316"
+          "schemeId": "userflow-376448"
         }
       ],
       "expo-secure-store"

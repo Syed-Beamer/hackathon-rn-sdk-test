@@ -1,4 +1,3 @@
-import "./userflow-ws-logger";
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useRef, useEffect } from "react";
 import {
@@ -14,7 +13,10 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import {
+  SafeAreaProvider,
+  initialWindowMetrics,
+} from "react-native-safe-area-context";
 import { PendoSDK, NavigationLibraryType } from "rn-pendo-sdk";
 import {
   SDK_VERSION,
@@ -33,7 +35,7 @@ async function initUserflow() {
   try {
     console.log("[UF] init ->", USERFLOW_SERVER_ENDPOINT);
     const config = await Userflow.init({
-      clientToken: "ct_6grq54rwz5d47bxl3jubyhqhje",
+      clientToken: "ct_hzedlhpn7rgfxhk5mcqwq26rum",
       serverEndpoint: USERFLOW_SERVER_ENDPOINT,
       pairingEndpoint: USERFLOW_SERVER_ENDPOINT,
     });
@@ -550,7 +552,7 @@ export default function App() {
   };
 
   return (
-    <SafeAreaProvider>
+    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <UserflowProvider>
         <SafeAreaView style={styles.safeArea}>
           <StatusBar style="dark" />
