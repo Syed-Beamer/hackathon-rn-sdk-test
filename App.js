@@ -60,11 +60,14 @@ import { Userflow, UserflowProvider } from "@userflow/react-native";
 // The local stack serves the end-user endpoint (prod: https://e.userflow.com)
 // on port 40401. The iOS Simulator shares the Mac's network stack, so localhost
 // is the host; the Android emulator needs 10.0.2.2 to reach it.
-const USERFLOW_SERVER_ENDPOINT = "http://localhost:40401";
+const USERFLOW_SERVER_ENDPOINT =
+  Platform.OS === "android"
+    ? "http://10.0.2.2:40401"
+    : "http://localhost:40401";
 async function initUserflow() {
   // init() takes a config object, and identify() throws until init() resolves.
   await Userflow.init({
-    clientToken: "ct_wsbg2s32tnffrnspespfkgkioq",
+    clientToken: "ct_hzedlhpn7rgfxhk5mcqwq26rum",
     // Omit serverEndpoint to target production.
     // serverEndpoint: USERFLOW_SERVER_ENDPOINT,
     serverEndpoint: USERFLOW_SERVER_ENDPOINT,

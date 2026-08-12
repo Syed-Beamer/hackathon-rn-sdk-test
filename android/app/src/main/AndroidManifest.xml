@@ -24,7 +24,7 @@
         <action android:name="android.intent.action.VIEW"/>
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
-        <data android:scheme="userflow-109020"/>
+        <data android:scheme="userflow-376448"/>
       </intent-filter>
     </activity>
   </application>

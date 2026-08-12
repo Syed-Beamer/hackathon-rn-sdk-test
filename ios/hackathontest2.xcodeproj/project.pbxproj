@@ -7,26 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DF53C0A744B88E4D947B1CF /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666DC7F2CFA8B9ACFFC9FBA /* ExpoModulesProvider.swift */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		2BCB80951240DC7910825415 /* libPods-hackathontest2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86AB24515AD71B057D663945 /* libPods-hackathontest2.a */; };
-		31C794F8BA4387CB53E161D0 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52652AC5128FB371AFBEE6C /* ExpoModulesProvider.swift */; };
+		289C501566668A0327EC1DF1 /* libPods-hackathontest2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCFB7E972AED5EB29E24CE3 /* libPods-hackathontest2.a */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		6D84F47E5B754AD908B48ED4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 3AB80DE9AD5E0F406648DE87 /* PrivacyInfo.xcprivacy */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
+		D5C2178E59B8028C98683803 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 616111EBF0D2CDA3AD29E576 /* PrivacyInfo.xcprivacy */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1273C0D054CFB7EB959AF346 /* Pods-hackathontest2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackathontest2.release.xcconfig"; path = "Target Support Files/Pods-hackathontest2/Pods-hackathontest2.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* hackathontest2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackathontest2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = hackathontest2/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = hackathontest2/Info.plist; sourceTree = "<group>"; };
-		3AB80DE9AD5E0F406648DE87 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = hackathontest2/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		4A2ED93E7CB8F0DEB8654241 /* Pods-hackathontest2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackathontest2.release.xcconfig"; path = "Target Support Files/Pods-hackathontest2/Pods-hackathontest2.release.xcconfig"; sourceTree = "<group>"; };
-		4FA096D8384744FFC5B2902A /* Pods-hackathontest2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackathontest2.debug.xcconfig"; path = "Target Support Files/Pods-hackathontest2/Pods-hackathontest2.debug.xcconfig"; sourceTree = "<group>"; };
-		86AB24515AD71B057D663945 /* libPods-hackathontest2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-hackathontest2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		198E6C88D0117C951002FF64 /* Pods-hackathontest2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackathontest2.debug.xcconfig"; path = "Target Support Files/Pods-hackathontest2/Pods-hackathontest2.debug.xcconfig"; sourceTree = "<group>"; };
+		2666DC7F2CFA8B9ACFFC9FBA /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-hackathontest2/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		616111EBF0D2CDA3AD29E576 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = hackathontest2/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		6BCFB7E972AED5EB29E24CE3 /* libPods-hackathontest2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-hackathontest2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = hackathontest2/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		D52652AC5128FB371AFBEE6C /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-hackathontest2/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = hackathontest2/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* hackathontest2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "hackathontest2-Bridging-Header.h"; path = "hackathontest2/hackathontest2-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -37,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BCB80951240DC7910825415 /* libPods-hackathontest2.a in Frameworks */,
+				289C501566668A0327EC1DF1 /* libPods-hackathontest2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,15 +53,7 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				3AB80DE9AD5E0F406648DE87 /* PrivacyInfo.xcprivacy */,
-			);
-			name = hackathontest2;
-			sourceTree = "<group>";
-		};
-		247C7C7F44089FCBC83A718B /* hackathontest2 */ = {
-			isa = PBXGroup;
-			children = (
-				D52652AC5128FB371AFBEE6C /* ExpoModulesProvider.swift */,
+				616111EBF0D2CDA3AD29E576 /* PrivacyInfo.xcprivacy */,
 			);
 			name = hackathontest2;
 			sourceTree = "<group>";
@@ -70,17 +62,27 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				86AB24515AD71B057D663945 /* libPods-hackathontest2.a */,
+				6BCFB7E972AED5EB29E24CE3 /* libPods-hackathontest2.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		531C222F5B9D58233ACFF72A /* ExpoModulesProviders */ = {
+		4E72E0239FD6E24932E9B62E /* hackathontest2 */ = {
 			isa = PBXGroup;
 			children = (
-				247C7C7F44089FCBC83A718B /* hackathontest2 */,
+				2666DC7F2CFA8B9ACFFC9FBA /* ExpoModulesProvider.swift */,
 			);
-			name = ExpoModulesProviders;
+			name = hackathontest2;
+			sourceTree = "<group>";
+		};
+		6EFD3E6C07F6E9E6171B72FA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				198E6C88D0117C951002FF64 /* Pods-hackathontest2.debug.xcconfig */,
+				1273C0D054CFB7EB959AF346 /* Pods-hackathontest2.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -97,8 +99,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				E78BD1FD72F17E9B37F5E343 /* Pods */,
-				531C222F5B9D58233ACFF72A /* ExpoModulesProviders */,
+				6EFD3E6C07F6E9E6171B72FA /* Pods */,
+				C97CFA891837CD25910CE21F /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -122,14 +124,12 @@
 			path = hackathontest2/Supporting;
 			sourceTree = "<group>";
 		};
-		E78BD1FD72F17E9B37F5E343 /* Pods */ = {
+		C97CFA891837CD25910CE21F /* ExpoModulesProviders */ = {
 			isa = PBXGroup;
 			children = (
-				4FA096D8384744FFC5B2902A /* Pods-hackathontest2.debug.xcconfig */,
-				4A2ED93E7CB8F0DEB8654241 /* Pods-hackathontest2.release.xcconfig */,
+				4E72E0239FD6E24932E9B62E /* hackathontest2 */,
 			);
-			name = Pods;
-			path = Pods;
+			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,13 +140,13 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "hackathontest2" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				0E596A2BE3A9564802C6F73E /* [Expo] Configure project */,
+				832F3F1D25542BF70AF1F0EE /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				9F4F51B971E5DDAEF94607AF /* [CP] Embed Pods Frameworks */,
+				494AE9C07908BD095A9F270B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -196,7 +196,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				6D84F47E5B754AD908B48ED4 /* PrivacyInfo.xcprivacy in Resources */,
+				D5C2178E59B8028C98683803 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,29 +242,27 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		0E596A2BE3A9564802C6F73E /* [Expo] Configure project */ = {
+		494AE9C07908BD095A9F270B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"$(SRCROOT)/.xcode.env",
-				"$(SRCROOT)/.xcode.env.local",
-				"$(SRCROOT)/hackathontest2/hackathontest2.entitlements",
-				"$(SRCROOT)/Pods/Target Support Files/Pods-hackathontest2/expo-configure-project.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-hackathontest2/Pods-hackathontest2-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/React-Core-prebuilt/React.framework/React",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ReactNativeDependencies/ReactNativeDependencies.framework/ReactNativeDependencies",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
 			);
-			name = "[Expo] Configure project";
-			outputFileListPaths = (
-			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"$(SRCROOT)/Pods/Target Support Files/Pods-hackathontest2/ExpoModulesProvider.swift",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactNativeDependencies.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-hackathontest2/expo-configure-project.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-hackathontest2/Pods-hackathontest2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -296,27 +294,29 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-hackathontest2/Pods-hackathontest2-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9F4F51B971E5DDAEF94607AF /* [CP] Embed Pods Frameworks */ = {
+		832F3F1D25542BF70AF1F0EE /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-hackathontest2/Pods-hackathontest2-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/React-Core-prebuilt/React.framework/React",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ReactNativeDependencies/ReactNativeDependencies.framework/ReactNativeDependencies",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
+			inputFileListPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env",
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/hackathontest2/hackathontest2.entitlements",
+				"$(SRCROOT)/Pods/Target Support Files/Pods-hackathontest2/expo-configure-project.sh",
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactNativeDependencies.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+				"$(SRCROOT)/Pods/Target Support Files/Pods-hackathontest2/ExpoModulesProvider.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-hackathontest2/Pods-hackathontest2-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-hackathontest2/expo-configure-project.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -326,7 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				31C794F8BA4387CB53E161D0 /* ExpoModulesProvider.swift in Sources */,
+				0DF53C0A744B88E4D947B1CF /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,7 +335,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4FA096D8384744FFC5B2902A /* Pods-hackathontest2.debug.xcconfig */;
+			baseConfigurationReference = 198E6C88D0117C951002FF64 /* Pods-hackathontest2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -360,18 +360,18 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anonymous.hackathontest2;
-				PRODUCT_NAME = "hackathontest2";
+				PRODUCT_NAME = hackathontest2;
 				SWIFT_OBJC_BRIDGING_HEADER = "hackathontest2/hackathontest2-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4A2ED93E7CB8F0DEB8654241 /* Pods-hackathontest2.release.xcconfig */;
+			baseConfigurationReference = 1273C0D054CFB7EB959AF346 /* Pods-hackathontest2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -391,10 +391,10 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anonymous.hackathontest2;
-				PRODUCT_NAME = "hackathontest2";
+				PRODUCT_NAME = hackathontest2;
 				SWIFT_OBJC_BRIDGING_HEADER = "hackathontest2/hackathontest2-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

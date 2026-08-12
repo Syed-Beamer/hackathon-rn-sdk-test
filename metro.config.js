@@ -5,7 +5,7 @@ const projectRoot = __dirname;
 
 const sdkPackages = path.resolve(
   projectRoot,
-  "../userflow-official-repos/userflow-react-native/packages",
+  "../userflow-react-native/packages",
 );
 
 const SINGLETON_MODULES = [

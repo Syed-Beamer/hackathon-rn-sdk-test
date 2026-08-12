@@ -10,6 +10,6 @@
       "bundleIdentifier": "com.anonymous.hackathontest2"
     },
 
-    "plugins": [["@userflow/expo", { "schemeId": "userflow-109020" }]]
+    "plugins": [["@userflow/expo", { "schemeId": "userflow-376448" }]]
   }
 }
