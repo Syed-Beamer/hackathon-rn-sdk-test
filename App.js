@@ -13,7 +13,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { Userflow } from "@userflow-tech/react-native";
+import { Userflow, UserflowProvider } from "@userflow-tech/react-native";
 
 const { height: SCREEN_HEIGHT, width: SCREEN_WIDTH } = Dimensions.get("window");
 
@@ -491,22 +491,27 @@ export default function App() {
   };
 
   useEffect(() => {
-    async function initUserflow() {
-      await Userflow.init({
-        clientToken: "ct_us1_kxb66uznfzcr7lzyrbd6pjpeai",
-        serverEndpoint: "https://e.userflowtoolz.com/",
-        pairingEndpoint: "https://e.userflowtoolz.com/",
-      });
-      await Userflow.identify("syed001", {
-        name: "syed",
-        email: "syed.ahamed@getbeamer.com",
-      });
+    function initUserflow() {
+      Userflow.init({
+        clientToken: "ct_ra65zdnznjdunbitfucriytqzm",
+        serverEndpoint: "https://e.userflowtoolz.com",
+        pairingEndpoint: "https://e.userflowtoolz.com",
+      })
+        .then(() =>
+          Userflow.identify("syed001", {
+            name: "syed",
+            email: "syed.ahamed@getbeamer.com",
+          }),
+        )
+        .catch((error) => {
+          console.log(error);
+        });
     }
 
     initUserflow();
   }, []);
   return (
-    <>
+    <UserflowProvider>
       <SafeAreaView style={styles.safeArea}>
         <StatusBar style="dark" />
 
@@ -687,7 +692,7 @@ export default function App() {
           </Pressable>
         </Modal>
       </SafeAreaView>
-    </>
+    </UserflowProvider>
   );
 }
 

@@ -10,7 +10,7 @@
       "bundleIdentifier": "com.anonymous.hackathontest2"
     },
     "plugins": [
-      ["./plugins/withUserflow.js", { "schemeId": "userflow-356810" }]
+      ["./plugins/withUserflow.js", { "schemeId": "userflow-641886" }]
     ]
   }
 }
