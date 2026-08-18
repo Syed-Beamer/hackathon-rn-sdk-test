@@ -13,6 +13,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { Userflow } from "@userflow-tech/react-native";
 
 const { height: SCREEN_HEIGHT, width: SCREEN_WIDTH } = Dimensions.get("window");
 
@@ -489,6 +490,21 @@ export default function App() {
     setSheetVisible(true);
   };
 
+  useEffect(() => {
+    async function initUserflow() {
+      await Userflow.init({
+        clientToken: "ct_us1_kxb66uznfzcr7lzyrbd6pjpeai",
+        serverEndpoint: "https://e.userflowtoolz.com/",
+        pairingEndpoint: "https://e.userflowtoolz.com/",
+      });
+      await Userflow.identify("syed001", {
+        name: "syed",
+        email: "syed.ahamed@getbeamer.com",
+      });
+    }
+
+    initUserflow();
+  }, []);
   return (
     <>
       <SafeAreaView style={styles.safeArea}>
