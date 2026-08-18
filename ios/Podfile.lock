@@ -62,7 +62,6 @@ PODS:
     - hermes-engine/Pre-built (= 0.81.5)
   - hermes-engine/Pre-built (0.81.5)
   - HMSegmentedControl (1.5.6)
-  - Pendo (3.12.4.11671)
   - RCTDeprecation (0.81.5)
   - RCTRequired (0.81.5)
   - RCTTypeSafety (0.81.5):
@@ -1342,28 +1341,6 @@ PODS:
     - React-RCTFBReactNativeSpec
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
-  - react-native-view-shot (5.1.0):
-    - hermes-engine
-    - RCTRequired
-    - RCTTypeSafety
-    - React-Core
-    - React-Core-prebuilt
-    - React-debug
-    - React-Fabric
-    - React-featureflags
-    - React-graphics
-    - React-ImageManager
-    - React-jsi
-    - React-NativeModulesApple
-    - React-RCTFabric
-    - React-renderercss
-    - React-rendererdebug
-    - React-utils
-    - ReactCodegen
-    - ReactCommon/turbomodule/bridging
-    - ReactCommon/turbomodule/core
-    - ReactNativeDependencies
-    - Yoga
   - React-NativeModulesApple (0.81.5):
     - hermes-engine
     - React-callinvoker
@@ -1737,59 +1714,6 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - RNPendoSdk (3.12.1):
-    - Pendo (~> 3.12.0)
-    - React
-    - React-Core
-  - UserflowReactNative (0.1.0):
-    - hermes-engine
-    - RCTRequired
-    - RCTTypeSafety
-    - React-Core
-    - React-Core-prebuilt
-    - React-debug
-    - React-Fabric
-    - React-featureflags
-    - React-graphics
-    - React-ImageManager
-    - React-jsi
-    - React-NativeModulesApple
-    - React-RCTFabric
-    - React-renderercss
-    - React-rendererdebug
-    - React-utils
-    - ReactCodegen
-    - ReactCommon/turbomodule/bridging
-    - ReactCommon/turbomodule/core
-    - ReactNativeDependencies
-    - Yoga
-  - Userpilot (1.0.15)
-  - UserpilotExpoConfig (1.0.2):
-    - ExpoModulesCore
-    - Userpilot (~> 1.0.7)
-  - UserpilotReactNative (1.0.10):
-    - hermes-engine
-    - RCTRequired
-    - RCTTypeSafety
-    - React-Core
-    - React-Core-prebuilt
-    - React-debug
-    - React-Fabric
-    - React-featureflags
-    - React-graphics
-    - React-ImageManager
-    - React-jsi
-    - React-NativeModulesApple
-    - React-RCTFabric
-    - React-renderercss
-    - React-rendererdebug
-    - React-utils
-    - ReactCodegen
-    - ReactCommon/turbomodule/bridging
-    - ReactCommon/turbomodule/core
-    - ReactNativeDependencies
-    - Userpilot (= 1.0.15)
-    - Yoga
   - Yoga (0.0.0)
 
 DEPENDENCIES:
@@ -1836,7 +1760,6 @@ DEPENDENCIES:
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
   - React-microtasksnativemodule (from `../node_modules/react-native/ReactCommon/react/nativemodule/microtasks`)
-  - react-native-view-shot (from `../node_modules/react-native-view-shot`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-oscompat (from `../node_modules/react-native/ReactCommon/oscompat`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
@@ -1869,17 +1792,11 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - ReactNativeDependencies (from `../node_modules/react-native/third-party-podspecs/ReactNativeDependencies.podspec`)
   - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
-  - RNPendoSdk (from `../node_modules/rn-pendo-sdk`)
-  - UserflowReactNative (from `../../userflow-react-native-sdk/packages/react-native`)
-  - "UserpilotExpoConfig (from `../node_modules/@userpilot/expo-config/ios`)"
-  - "UserpilotReactNative (from `../node_modules/@userpilot/react-native`)"
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   trunk:
     - HMSegmentedControl
-    - Pendo
-    - Userpilot
 
 EXTERNAL SOURCES:
   EXConstants:
@@ -1967,8 +1884,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   React-microtasksnativemodule:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/microtasks"
-  react-native-view-shot:
-    :path: "../node_modules/react-native-view-shot"
   React-NativeModulesApple:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios"
   React-oscompat:
@@ -2033,14 +1948,6 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/ReactNativeDependencies.podspec"
   ReactNativeNavigation:
     :path: "../node_modules/react-native-navigation"
-  RNPendoSdk:
-    :path: "../node_modules/rn-pendo-sdk"
-  UserflowReactNative:
-    :path: "../../userflow-react-native-sdk/packages/react-native"
-  UserpilotExpoConfig:
-    :path: "../node_modules/@userpilot/expo-config/ios"
-  UserpilotReactNative:
-    :path: "../node_modules/@userpilot/react-native"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -2055,7 +1962,6 @@ SPEC CHECKSUMS:
   FBLazyVector: e95a291ad2dadb88e42b06e0c5fb8262de53ec12
   hermes-engine: 9f4dfe93326146a1c99eb535b1cb0b857a3cd172
   HMSegmentedControl: 34c1f54d822d8308e7b24f5d901ec674dfa31352
-  Pendo: 7dac8fa594dbdf1448dbf7c835d35947a9e96bb4
   RCTDeprecation: 943572d4be82d480a48f4884f670135ae30bf990
   RCTRequired: 8f3cfc90cc25cf6e420ddb3e7caaaabc57df6043
   RCTTypeSafety: 16a4144ca3f959583ab019b57d5633df10b5e97c
@@ -2089,7 +1995,6 @@ SPEC CHECKSUMS:
   React-logger: 50fdb9a8236da90c0b1072da5c32ee03aeb5bf28
   React-Mapbuffer: 9050ee10c19f4f7fca8963d0211b2854d624973e
   React-microtasksnativemodule: f775db9e991c6f3b8ccbc02bfcde22770f96e23b
-  react-native-view-shot: a0290bf30540d830b4afb30e200e8b7dca2f2a9e
   React-NativeModulesApple: 8969913947d5b576de4ed371a939455a8daf28aa
   React-oscompat: ce47230ed20185e91de62d8c6d139ae61763d09c
   React-perflogger: 02b010e665772c7dcb859d85d44c1bfc5ac7c0e4
@@ -2122,13 +2027,8 @@ SPEC CHECKSUMS:
   ReactCommon: 08810150b1206cc44aecf5f6ae19af32f29151a8
   ReactNativeDependencies: 71ce9c28beb282aa720ea7b46980fff9669f428a
   ReactNativeNavigation: 2f6152c7d8fa846b1aa5b88685e0d8d8f6b84485
-  RNPendoSdk: a4dcfe6987400108791022fe2df4f2bd9ac2f99f
-  UserflowReactNative: f367061cd350401948ba148bb30a9204fa8a833b
-  Userpilot: 33d65879168e433477cd1c2547eca0c1b5f3c038
-  UserpilotExpoConfig: daa970fac4a95e3b1772f02a63adc2eccac95551
-  UserpilotReactNative: d36f299efd5016a163b86f86367d69a1dadfda04
   Yoga: 5934998fbeaef7845dbf698f698518695ab4cd1a
 
 PODFILE CHECKSUM: ecc47f3a00a9b3fa62932f62874ed83bae79b185
 
-COCOAPODS: 1.16.2
+COCOAPODS: 1.17.0

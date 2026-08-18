@@ -9,16 +9,11 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@userflow/react-native": "file:../userflow-react-native-sdk/packages/react-native",
-    "@userpilot/expo-config": "^1.0.2",
-    "@userpilot/react-native": "^1.0.10",
     "expo": "~54.0.33",
     "expo-status-bar": "~3.0.9",
     "react": "19.1.0",
     "react-native": "0.81.5",
-    "react-native-navigation": "^8.8.2",
-    "react-native-view-shot": "^5.1.0",
-    "rn-pendo-sdk": "^3.12.1"
+    "react-native-navigation": "^8.8.2"
   },
   "private": true,
   "devDependencies": {

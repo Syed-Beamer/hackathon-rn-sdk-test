@@ -14,28 +14,6 @@ import {
   View,
 } from "react-native";
 
-import { Userflow, UserflowProvider, DesignMode } from "@userflow/react-native";
-
-// ─── Userflow setup ──────────────────────────────────────────────────────────
-
-const userflowEnvId = "c40ff0bd-e258-4831-b793-ea0cc968f2ec";
-
-void Userflow.setup({
-  clientToken: "ct_vpo46benuvgbrkwi7fvvjox2aa",
-  serverEndpoint: "http://localhost:40401",
-  appVersion: "1.0.0",
-  appBuild: "1",
-  debug: __DEV__,
-  devModeEnabled: __DEV__,
-  onInitComplete: () => {
-    void Userflow.instance().startSession({
-      visitorId: "test-user-1",
-      attributes: { name: "Test User", email: "test@example.com" },
-    });
-  },
-});
-// ─────────────────────────────────────────────────────────────────────────────
-
 const { height: SCREEN_HEIGHT, width: SCREEN_WIDTH } = Dimensions.get("window");
 
 const STOCKS = [
@@ -512,7 +490,7 @@ export default function App() {
   };
 
   return (
-    <UserflowProvider userflow={Userflow.instance()}>
+    <>
       <SafeAreaView style={styles.safeArea}>
         <StatusBar style="dark" />
 
@@ -693,19 +671,7 @@ export default function App() {
           </Pressable>
         </Modal>
       </SafeAreaView>
-      <DesignMode
-        eventLogCapacity={__DEV__ ? 80 : 30}
-        {...(userflowEnvId
-          ? {
-              dev: {
-                envId: userflowEnvId,
-                auto: true,
-                label: "Userflow Hackathon",
-              },
-            }
-          : {})}
-      />
-    </UserflowProvider>
+    </>
   );
 }
 
